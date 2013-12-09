@@ -20,16 +20,8 @@ def insertTemp():
 		cursor = connection.cursor();
 		cursor.execute('INSERT INTO temp(temp_instance) VALUES(?)', (temp,))
 		connection.commit()
-
-def getData():
-	with connection:
-		cursor = connection.cursor()
-		cursor.execute('SELECT * FROM temp')
-		data = cursor.fetchall()
-		print data
-
+		print temp
 
 if __name__ == '__main__':
 	connection = lite.connect('weather.db')
 	insertTemp()
-	getData()
