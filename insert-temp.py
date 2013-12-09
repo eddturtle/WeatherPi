@@ -8,8 +8,7 @@ from random import randint
 
 def getTemp():
 	tempFile = open('/sys/bus/w1/devices/28-00000529fbad/w1_slave', 'r')
-	contents = tempFile
-	tempFile.seek(0)
+	contents = tempFile.read()
 	contentsList = string.split(contents)
 	temp = contentsList[-1]
 	tempFile.close()
