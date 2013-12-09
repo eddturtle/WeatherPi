@@ -10,7 +10,8 @@ def getTemp():
 	tempFile = open('/sys/bus/w1/devices/28-00000529fbad/w1_slave', 'r')
 	contents = tempFile.read()
 	contentsList = string.split(contents)
-	temp = contentsList[-1]
+	temp = string.split(contentsList[-1])
+	temp = temp.split('t=')
 	tempFile.close()
 	return temp
 
