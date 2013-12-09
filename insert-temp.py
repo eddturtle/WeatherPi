@@ -12,7 +12,7 @@ def getTemp():
 	contentsList = string.split(contents)
 	temp = contentsList[-1]
 	tempFile.close()
-)	return temp
+	return temp
 
 def insertTemp():
 	temp = getTemp()
