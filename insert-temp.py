@@ -11,7 +11,7 @@ def getTemp():
 	contents = tempFile.read()
 	contentsList = string.split(contents)
 	temp = string.split(contentsList[-1])
-	temp = str(temp).replace('t=', '')
+	temp = str(''.join(temp)).replace('t=', '')
 	tempFile.close()
 	return temp
 
