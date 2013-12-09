@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import string
 import sqlite3 as lite
 import sys
 from random import randint
