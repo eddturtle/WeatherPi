@@ -12,7 +12,7 @@ $(document).ready( function() {
 			$('.latest-data .temperature').html( (latest.temp_instance/1000).toFixed(1) + '&deg;c' );
 			$('.latest-data .date').html( latest.temp_date );
 
-			fillStats(json.core-stats);
+			fillStats(json['core-stats']);
 			fillTable(json.instances, $('.past-week'));
 		}
 	});
@@ -24,6 +24,8 @@ function fillLatest() {
 
 function fillStats(stats) {
 	$('.max').html(stats.temp_max);
+	$('.min').html(stats.temp_min);
+	$('.avg').html(stats.temp_avg);
 }
 
 function fillTable(instances, table) {
