@@ -2,7 +2,9 @@
 <html>
 	<head>
 		<title>Weather</title>
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+	    {% block head %}
+			<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+	    {% endblock %}
 	</head>
 	<body>
 		<h1>WeatherPi</h1>
