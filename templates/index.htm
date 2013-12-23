@@ -20,7 +20,12 @@
 			</div>
 
 			<!-- All Data -->
-			<table class="table table-striped past-week"></table>
+			<table class="table table-striped past-week">
+				<thead>
+					<th>Date</th>
+					<th>Temperature</th>
+				</thead>
+			</table>
 		</div>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -37,7 +42,7 @@
 					contentType: 'application/json',
 					success: function(json) {
 						var latest = json.instances[0];
-						$('.latest-data .temperature').html( latest.temp_instance / 1000 + '&deg;c' );
+						$('.latest-data .temperature').html( (latest.temp_instance/1000).toFixed(1) + '&deg;c' );
 						$('.latest-data .date').html( latest.temp_date );
 
 						fillTable(json.instances, $('.past-week'));

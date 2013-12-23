@@ -1,11 +1,14 @@
 
 
- body {
- 	background-color: #F1F1F1;
- 	text-align: center;
- }
+body {
+	text-align: center;
+}
 
 
- .latest-date .temperature {
- 	font-weight: bold;
- }
+.latest-date {
+	margin-bottom: 100px;
+}
+
+.latest-date .temperature {
+	font-weight: bold;
+}
