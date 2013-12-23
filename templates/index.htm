@@ -6,16 +6,22 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 	</head>
 	<body>
-		<h1>WeatherPi</h1>
 
-		<div class="latest-data">
-			Latest Recorded Temperature:
-			<span class="temperature"></span>
-			(<span class="date"></span>)
+		<div class="container">
+
+			<!-- Title -->
+			<h1>WeatherPi</h1>
+
+			<!-- Latest Data -->
+			<div class="latest-data">
+				Latest Recorded Temperature:
+				<span class="temperature"></span>
+				(<span class="date"></span>)
+			</div>
+
+			<!-- All Data -->
+			<table class="table past-week"></table>
 		</div>
-
-		<table class="table past-week">
-		</table>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
@@ -34,16 +40,20 @@
 						$('.latest-data .temperature').html( latest.temp_instance / 1000 );
 						$('.latest-data .date').html( latest.temp_date );
 						pastWeek = json.instances;
-						$.each(pastWeek, function(i, val) {
-							var html = '<tr>';
-							html += '<td>' + val.temp_date + '</td>';
-							html += '<td>' + (val.temp_instance/1000).toFixed(1) + '&deg;c</td>';
-							html += '</tr>';
-							$('.past-week').append(html);
-						});
+						fillTable(pastWeek, $('past-week'));
 					}
 				});
 			});
+
+			function fillTable(instances, table) {
+				$.each(instances, function(i, val) {
+					var html = '<tr>';
+					html += '<td>' + val.temp_date + '</td>';
+					html += '<td>' + (val.temp_instance/1000).toFixed(1) + '&deg;c</td>';
+					html += '</tr>';
+					table.append(html);
+				});
+			}
 		</script>
 
 	</body>
