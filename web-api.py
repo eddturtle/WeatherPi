@@ -35,10 +35,10 @@ def getStats():
 	connection = connectDB()
 	with connection:
 		cursor = connection.cursor()
-		query = 'SELECT AVG(temp_instance), \
-				  		MAX(temp_instance), \
-				  		MIN(temp_instance), \
-				  		COUNT(temp_instance) \
+		query = 'SELECT AVG(temp_instance) as temp_average, \
+				  		MAX(temp_instance) as temp_max, \
+				  		MIN(temp_instance) as temp_min, \
+				  		COUNT(temp_instance) as temp_count \
 				 FROM temp'
 		cursor.execute(query,)
 		data = cursor.fetchall()
@@ -51,7 +51,7 @@ def getTemperatures(begin, end):
 		end = time.time()
 	begin = dt.datetime.fromtimestamp(begin)
 	end = dt.datetime.fromtimestamp(end)
-	return jsonify({ "stats": getStats(), "instances": getData(begin, end) })
+	return jsonify({ "core-stats": getStats(), "instances": getData(begin, end) })
 
 @app.route('/')
 def home():
