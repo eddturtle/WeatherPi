@@ -12,10 +12,19 @@ $(document).ready( function() {
 			$('.latest-data .temperature').html( (latest.temp_instance/1000).toFixed(1) + '&deg;c' );
 			$('.latest-data .date').html( latest.temp_date );
 
+			fillStats(json.core-stats);
 			fillTable(json.instances, $('.past-week'));
 		}
 	});
 });
+
+function fillLatest() {
+
+}
+
+function fillStats(stats) {
+	$('.max').html(stats.temp_max);
+}
 
 function fillTable(instances, table) {
 	$.each(instances, function(i, val) {
