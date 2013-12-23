@@ -13,9 +13,8 @@ function getData() {
 		dataType: 'json',
 		contentType: 'application/json',
 		success: function(json) {
-			console.log(json);
-			fileeLatest(json.instances[0]);
-			fillStats(json['core-stats']);
+			fillLatest(json.instances[0]);
+			fillStats(json['core-stats'][0]);
 			fillTable(json.instances, $('.past-week'));
 		}
 	});
