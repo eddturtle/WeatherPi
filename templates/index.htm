@@ -14,8 +14,8 @@
 			(<span class="date"></span>)
 		</div>
 
-		<div class="past-week">
-		</div>
+		<table class="table past-week">
+		</table>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
@@ -35,7 +35,11 @@
 						$('.latest-data .date').html( latest.temp_date );
 						pastWeek = json.instances;
 						$.each(pastWeek, function(i, val) {
-							$('.past-week').append('<p>' + (val.temp_instance/1000).toFixed(1) + '&deg;c</p>');
+							var html = '<tr>';
+							html += '<td>' + val.temp_date + '</td>';
+							html += '<td>' + (val.temp_instance/1000).toFixed(1) + '&deg;c</td>';
+							html += '</tr>';
+							$('.past-week').append(html);
 						});
 					}
 				});
