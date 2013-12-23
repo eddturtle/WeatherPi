@@ -35,10 +35,10 @@ def getStats():
 	connection = connectDB()
 	with connection:
 		cursor = connection.cursor()
-		query = 'SELECT AVG(temp_instance) as average, \
-				  		MAX(temp_instance) as max, \
-				  		MIN(temp_instance) as min, \
-				  		COUNT(temp_instance) as count \
+		query = 'SELECT AVG(temp_instance), \
+				  		MAX(temp_instance), \
+				  		MIN(temp_instance), \
+				  		COUNT(temp_instance) \
 				 FROM temp'
 		cursor.execute(query,)
 		data = cursor.fetchall()
