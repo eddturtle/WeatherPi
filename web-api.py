@@ -31,11 +31,13 @@ def getData(begin, end):
 		data = cursor.fetchall()
 		return data
 
-def getAverage():
-	connection: connectDB()
+def getStats():
+	connection = connectDB()
 	with connection:
 		cursor = connection.cursor()
-		query = 'SELECT AVG(temp_instance) \
+		query = 'SELECT AVG(temp_instance) as average \
+				  		MAX(temp_instance) as max \
+				  		MIN(temp_instance) as min \
 				 FROM temp'
 		cursor.execute(query,)
 		data = cursor.fetchall()
