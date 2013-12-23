@@ -4,3 +4,8 @@
  	background-color: #F1F1F1;
  	text-align: center;
  }
+
+
+ .latest-date .temperature {
+ 	font-weight: bold;
+ }
