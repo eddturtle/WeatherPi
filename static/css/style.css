@@ -6,9 +6,14 @@ body {
 
 
 .latest-date {
-	margin-bottom: 100px;
+	padding-bottom: 100px;
 }
 
 .latest-date .temperature {
 	font-weight: bold;
+}
+
+
+table {
+	text-align: left;
 }
