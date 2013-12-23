@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>Weather</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 	</head>
 	<body>
@@ -15,8 +16,9 @@
 
 		<div class="past-week">
 		</div>
-<!--
+
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 		<script>
 			var pastWeek = [];
 
@@ -40,6 +42,5 @@
 			});
 		</script>
 
-		-->
 	</body>
 </html>
