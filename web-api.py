@@ -22,12 +22,22 @@ def getData(begin, end):
 	connection = connectDB()
 	with connection:
 		cursor = connection.cursor()
-		query = 'SELECT * \
+		query = 'SELECT temp_instance, temp_date \
 				 FROM temp \
 				 WHERE temp_date > ? \
 				 AND temp_date < ? \
 				 ORDER BY temp_date DESC'
 		cursor.execute(query, (begin, end))
+		data = cursor.fetchall()
+		return data
+
+def getAverage():
+	connection: connectDB()
+	with connection:
+		cursor = connection.cursor()
+		query = 'SELECT AVG(temp_instance) \
+				 FROM temp'
+		cursor.execute(query,)
 		data = cursor.fetchall()
 		return data
 
@@ -38,7 +48,7 @@ def getTemperatures(begin, end):
 		end = time.time()
 	begin = dt.datetime.fromtimestamp(begin)
 	end = dt.datetime.fromtimestamp(end)
-	return jsonify({ "instances": getData(begin, end) })
+	return jsonify({ "average": getAverage(), "instances": getData(begin, end) })
 
 @app.route('/')
 def home():
