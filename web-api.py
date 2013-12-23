@@ -51,7 +51,7 @@ def getTemperatures(begin, end):
 		end = time.time()
 	begin = dt.datetime.fromtimestamp(begin)
 	end = dt.datetime.fromtimestamp(end)
-	return jsonify({ "average": getAverage(), "instances": getData(begin, end) })
+	return jsonify({ "stats": getStats(), "instances": getData(begin, end) })
 
 @app.route('/')
 def home():
