@@ -1,25 +1,29 @@
+
+var apiLocation = 'api/v1/';
 var pastWeek = [];
 
 $(document).ready( function() {
-	var d = new Date().getTime();
+	getData();
+});
+
+function getData() {
 	$.ajax({
-		url: 'api/v1/0/0',
+		url: apiLocation + '0/0',
 		type: 'GET',
 		dataType: 'json',
 		contentType: 'application/json',
 		success: function(json) {
-			var latest = json.instances[0];
-			$('.latest-data .temperature').html( (latest.temp_instance/1000).toFixed(1) + '&deg;c' );
-			$('.latest-data .date').html( latest.temp_date );
-
+			console.log(json);
+			fileeLatest(json.instances[0]);
 			fillStats(json['core-stats']);
 			fillTable(json.instances, $('.past-week'));
 		}
 	});
-});
+}
 
-function fillLatest() {
-
+function fillLatest(latest) {
+	$('.latest-data .temperature').html( (latest.temp_instance/1000).toFixed(1) + '&deg;c' );
+	$('.latest-data .date').html( latest.temp_date );
 }
 
 function fillStats(stats) {
